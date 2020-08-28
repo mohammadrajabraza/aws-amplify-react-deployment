@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import axios from 'axios'
+import { API } from 'aws-amplify';
+// import axios from 'axios'
 
 function App() {
   let [location, setLocation] = React.useState('')
@@ -16,19 +17,19 @@ function App() {
     setError(false)
 
     //make edit to redeploy
-    axios.post('/api/route', { location })
-      .then((data) => {
-        setTempC(data.tempC)
-        setTempF(data.tempF)
-        setConditions(data.conditions)
-      })
-      .catch(e => {
-        setError(true)
-        console.log(e)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
+    API.post('weatherAPI', '/weather', myInit)
+    .then((data) => {
+      setTempC(data.tempC)
+      setTempF(data.tempF)
+      setConditions(data.conditions)
+    })
+    .catch(e => {
+      setError(true)
+      console.log(e)
+    })
+    .finally(() => {
+      setLoading(false)
+    })
   }
 
   return (

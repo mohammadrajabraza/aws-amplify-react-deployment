@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/weather",
+            "lambdaFunction": "weather",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "weatherAPI",
+    "apiName": "weatherAPI",
+    "functionArns": [
+        {
+            "lambdaFunction": "weather"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-rapidapideplyreactap-dev-174647-authRole",
+        "unAuthRoleName": "amplify-rapidapideplyreactap-dev-174647-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "weather",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
